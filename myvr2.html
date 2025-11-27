@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>My XR Space</title>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene>
+
+      <!-- 1. 카메라 + 커서 (시선 커서) -->
+      <a-entity position="0 1.6 0">
+        <a-camera>
+          <!-- 머리 방향으로 나가는 커서 -->
+          <a-cursor
+            raycaster="objects: .clickable"
+            material="color: #FFFFFF; shader: flat"
+            geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.01">
+          </a-cursor>
+        </a-camera>
+      </a-entity>
+
+      <!-- 2. Quest 컨트롤러 레이저 -->
+      <a-entity laser-controls="hand: right"
+                raycaster="objects: .clickable">
+      </a-entity>
+
+      <!-- 3. 배경 하늘 -->
+      <a-sky color="#ECECEC"></a-sky>
+
+      <!-- 4. 바닥 -->
+      <a-plane position="0 0 -4"
+               rotation="-90 0 0"
+               width="10"
+               height="10"
+               color="#7BC8A4">
+      </a-plane>
+
+      <!-- 5. 박스 -->
+      <a-box position="-1 1 -3"
+             rotation="0 45 0"
+             depth="1"
+             height="1"
+             width="1"
+             color="#4CC3D9">
+      </a-box>
+
+      <!-- 6. (상호작용용) 구 -->
+      <a-sphere class="clickable"
+                position="0 1.25 -5"
+                radius="1.25"
+                color="#EF2D5E"
+                shadow
+                animation__click="startEvents: click;
+                                  property: scale;
+                                  from: 1 1 1;
+                                  to: 1.5 1.5 1.5;
+                                  dur: 200;
+                                  dir: alternate">
+      </a-sphere>
+
+      <!-- 7. 원통 -->
+      <a-cylinder position="1 0.75 -3"
+                  radius="0.5"
+                  height="1.5"
+                  color="#FFC65D">
+      </a-cylinder>
+
+      <!-- 8. 텍스트 -->
+      <a-text value="SFLAB"
+              position="-1 2 -3"
+              color="#222"
+              width="4">
+      </a-text>
+
+    </a-scene>
+  </body>
+</html>
